@@ -18,6 +18,7 @@ Some common directives :
 - **ENV** Set environment variables useful at runtime
 - **RUN** Created a new layer, by running a cmd and commiting changes
 - **CMD** Specifies a default command when running a container.
+- **EXPOSE** Documents which port are intended to be published when running a container.
 
 For more directives see : https://docs.docker.com/engine/reference/builder/
 

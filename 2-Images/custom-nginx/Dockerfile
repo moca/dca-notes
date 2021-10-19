@@ -9,4 +9,6 @@ RUN apt-get update && apt-get install -y curl
 RUN apt-get update && apt-get install -y nginx=$NGINX_VERSION
 # We cannot be sure that every apt-get update will be launch, 
 
+EXPOSE 80
+
 CMD ["nginx", "-g", "daemon off;"]
