@@ -9,6 +9,12 @@ RUN apt-get update && apt-get install -y curl
 RUN apt-get update && apt-get install -y nginx=$NGINX_VERSION
 # We cannot be sure that every apt-get update will be launch, 
 
-EXPOSE 80
+WORKDIR /var/www/html
+COPY index.html .
 
+
+EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
+
+STOPSIGNAL SIGTERM
+HEALTHCHECK CMD curl localhost:80

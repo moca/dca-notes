@@ -19,11 +19,27 @@ Some common directives :
 - **RUN** Created a new layer, by running a cmd and commiting changes
 - **CMD** Specifies a default command when running a container.
 - **EXPOSE** Documents which port are intended to be published when running a container.
+- **WORKDIR** sets the directory where other directives **ADD**, **COPY**, **CMD**, **ENTRYPOINT** will apply. They can be absolute or relative (to previous)
+-  **COPY** copy files from local host to container
+-  **ADD** like **COPY** but can also pull from URL, and extract a compressed archive.
+-  **STOPSIGNAL** specify the signal that will be send to the container on stop.
+-  **HEALTHCHECK** Specify a command to do health checl
 
-For more directives see : https://docs.docker.com/engine/reference/builder/
+See more https://docs.docker.com/engine/reference/builder/
 
 # Building image 
 
 Use the command `docker build -t TAG .` to run the image `docker run IMAGE`.
+
+# Efficient docker images
+
+- Smaller images are more easy to start/stop/delete
+- Put things less likely to change on lower-level layers
+- Dont create unnecessary layers
+- **Avoid including unnecessary files and packages**
+
+## Multi-stage builds
+
+
 
 
