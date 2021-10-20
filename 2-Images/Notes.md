@@ -68,3 +68,19 @@ Sometimes we want to flatten the layers. There is no official method to do so, h
 **Export/import process flattens the image to one single layer !**
 
 
+## Docker Registries
+
+A registry is responsible for storing and distributing Docker images.
+
+- By default we use _Docker HUB_
+- Two other options for creating your own registry (with Docker)
+  + Use OSS Docker Registry
+  + Enterprise Solution _Docker Trusted Registry_
+
+
+To create a basic registry, simply run the registry image and publish port 5000.
+
+`docker run -d -p 5000:5000 --restart=always --name registry -e REGISTRY_LOG_LEVEL=debug registry:2` 
+
+
+

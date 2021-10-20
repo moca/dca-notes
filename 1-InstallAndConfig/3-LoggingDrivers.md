@@ -1,6 +1,6 @@
 # Logging Drivers
 
-pluggable framerowk for accessing log data from services and container in docker.
+pluggable framework for accessing log data from services and container in docker.
 
 To configure the default behaviour for `log-driver` and `log-otps` we can modify the `/etc/docker/daemon.json`.
 
