@@ -9,7 +9,7 @@ The advantage of a layered FS resides on the sharing of layers between images, t
 - faster image transfer
 - faster image build
 
-# Dockerfiles
+## Dockerfiles
 
 Dockerfile is a set of instruction which are used to construct a Docker image. These instruction are called **directives**.
 
@@ -27,18 +27,19 @@ Some common directives :
 
 See more https://docs.docker.com/engine/reference/builder/
 
-# Building image 
+## Building image 
 
 Use the command `docker build -t TAG .` to run the image `docker run IMAGE`.
 
-# Efficient docker images
+## Efficient docker images
 
 - Smaller images are more easy to start/stop/delete
 - Put things less likely to change on lower-level layers
 - Dont create unnecessary layers
-- **Avoid including unnecessary files and packages**
+- **Avoid including unnecessary files and packages** --> take advantage of multi-stage builds.
 
-## Multi-stage builds
+
+### Multi-stage builds
 
 - Multi-stage builds have more than one FROM directive. 
 - Each stage begins a completely new FS layering.
@@ -48,9 +49,22 @@ Two options to copy from a previous stage :
 - Unnamed stage, use the stage number  (zero indexed): `COPY --from=0`
 - Named stade `FROM <image> AS stage1` : `COPY --from=stage1`
 
+## Managing Images
 
+- `docker [image] pull IMAGE[:TAG]` download an  image
+- `docker image ls` list images
+- `docker image ls -a` include intermediate images
+- `docker [image] inspect IMAGE` get detail info about an image
+- `docker [image] inspect IMAGE --format TEMPLATE` to get only a subset of information
+- `docker [image] rm IMAGE[:tag]` or `docker rmi IMAGE[:tag]` to delete an image add `-f` to remove tags and delete the image, might create dnagling image in the host.
+- `docker image prune` delete unused images from the system
+## Flattening image
 
+Sometimes we want to flatten the layers. There is no official method to do so, however there is a simple workaround :
+- run a container from the image
+- export container
+- import container
 
-
+**Export/import process flattens the image to one single layer !**
 
 
